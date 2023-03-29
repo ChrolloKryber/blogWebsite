@@ -20,7 +20,7 @@ const app = express();
 mongoose.connect(mongoURL)
   .then(() => {
     app.listen(port, function () {
-      console.log(`Server started on port http://localhost:${port}`);
+      console.log(`listening to requests on http://localhost:${port}`);
     });
   })
   .catch(err => console.log(err))
