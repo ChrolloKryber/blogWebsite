@@ -8,7 +8,7 @@ const mongoose = require('mongoose');
 const { Mongoose } = require("mongoose");
 require('dotenv').config()
 
-const port = process.env.PORT || 3000
+const port = process.env.PORT;
 
 const mongoURL = "mongodb+srv://"+ process.env.DB_USERNAME + ":" + process.env.DB_PASSWORD + "@cluster0.v3owmde.mongodb.net/" + process.env.DB_NAME + "?retryWrites=true&w=majority"
 const homeStartingContent = "Lacus vel facilisis volutpat est velit egestas dui id ornare. Semper auctor neque vitae tempus quam. Sit amet cursus sit amet dictum sit amet justo. Viverra tellus in hac habitasse. Imperdiet proin fermentum leo vel orci porta. Donec ultrices tincidunt arcu non sodales neque sodales ut. Mattis molestie a iaculis at erat pellentesque adipiscing. Magnis dis parturient montes nascetur ridiculus mus mauris vitae ultricies. Adipiscing elit ut aliquam purus sit amet luctus venenatis lectus. Ultrices vitae auctor eu augue ut lectus arcu bibendum at. Odio euismod lacinia at quis risus sed vulputate odio ut. Cursus mattis molestie a iaculis at erat pellentesque adipiscing.";
@@ -17,7 +17,7 @@ const contactContent = "Scelerisque eleifend donec pretium vulputate sapien. Rho
 
 const app = express();
 
-mongoose.connect(mongoURL)
+mongoose.connect(mongoURL).catch(err => console.log(err))
 
 const postsSchema = mongoose.Schema({
   title: {
@@ -34,7 +34,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static("public"));
 
 app.get('/', async (req, res) => {
-  await Posts.find({})
+  await Posts.find({}).maxTimeMS(30000)
     .then(posts => {
       console.log(posts);
       res.render('home', { homeStartingContent: homeStartingContent, posts: posts });
@@ -78,7 +78,6 @@ app.get('/posts/:postTitle', (req, res) => {
   const requestedTitle = req.params.postTitle;
   Posts.find({_id: requestedTitle})
     .then(posts => {
-      console.log(posts);
       res.render('post', {postTitle: posts[0].title, postBody: posts[0].body})
     })
     .catch(() => {
