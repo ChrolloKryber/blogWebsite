@@ -72,8 +72,6 @@ app.post('/compose', (req, res) => {
     )
 })
 
-let correctTitle;
-
 app.get('/posts/:postTitle', (req, res) => {
   const requestedTitle = req.params.postTitle;
   Posts.find({_id: requestedTitle})
