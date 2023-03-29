@@ -52,6 +52,12 @@
 .delete {
     width: 40px;
 }
+
+.delete-button {
+    background: transparent;
+    border: none;
+}
+
 .footer {
     position: absolute;
     text-align: center;

@@ -90,10 +90,10 @@ app.get('/posts/:postTitle', (req, res) => {
 })
 
 app.post('/delete', (req, res) => {
-  const id = req.body.deleteID
+  const id = req.body.deleteID;
   Posts.findOneAndDelete({ _id: id })
-    .then(response => { 
+    .then(response => {
       console.log(response)
     })
-    res.redirect('/')
+  res.redirect('/home')
 })
