@@ -1,6 +1,16 @@
 <%- include('./partials/header'); %>
 
-<h1><%= postTitle %></h1>
-<p><%= postBody %></p>
+    <h1>
+        <%= postTitle %>
+    </h1>
+    <p>
+        <%= postBody %>
+    </p>
+    <form action="/delete" method="post">
+        <div class="delete-button">
+            <input name="deleteID" type="checkbox" value="<%= id %>" name="deleteID" onchange="this.form.submit()">
+            <img class="delete" src="https://cdn-icons-png.flaticon.com/512/5028/5028066.png" alt="Delete">
+        </div>
+    </form>
 
-<%- include('./partials/footer'); %>
+    <%- include('./partials/footer'); %>

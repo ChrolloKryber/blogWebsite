@@ -49,6 +49,9 @@
     padding-bottom: 60px;
 }
 
+.delete {
+    width: 40px;
+}
 .footer {
     position: absolute;
     text-align: center;
