@@ -47,3 +47,7 @@ Hi there! This is a small personal project I did to learn more about fullstack d
 This project was a very enlightening experience. I got to learn a lot during this period from Templating with EJS to saving data in a databse. This was a great experience for learning both front-end and back-end. 
 
 As well as storing private data in environment variables and deploying with a database. Overall I had a great experience building this!
+
+---
+
+Icons from Flaticon
